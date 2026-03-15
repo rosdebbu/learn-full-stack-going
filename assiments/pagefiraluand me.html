@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gublu and bubu </title>
+    <style>
+         body
+            {
+            background-color: #010101;
+        }
+
+        .card-group
+        {
+            display: flex;
+            gap: 30px;
+            cursor: pointer;
+            flex-wrap: wrap;
+            padding:20px;   
+            justify-content:center;
+        }
+
+        .card
+        {
+            background-color: #b9d2ef;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden; 
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            border-radius: 20px;
+            flex-direction: column;
+        }
+        .card img {
+            width: 80%;
+            padding-left: 20px;
+            padding-top: 10px;
+            height: 200px; /* Locks all images to the same height */
+            object-fit: cover; /* Ensures images fill the space without getting squished or stretched */
+        }
+     .card-body {
+               padding: 16px; /* Adds even padding around the text inside the card */
+         }
+      .copyright
+        {
+            text-align: center;
+            padding: 10px;
+            color: #fff;
+            font-size: 12px;
+        }
+      .container-fluid
+      {
+        justify-items: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 10px 20px;
+        display: flex;
+      }
+     .navbar-nav
+         {
+          display: flex;
+          gap: 20px;
+         }
+         .form-control
+         {
+          width: 200px;
+         }
+      .search-form {
+        display: flex;
+        gap: 10px;
+      }   
+      .nav-link a {
+        color: #fff;
+        text-decoration: none;
+      }
+       .nav-link a:hover {
+        color: #ddd;
+      }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar scroll</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Link
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Link</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+    <div class="card-group">
+  <div class="card">
+    <img src="alu2.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Durga-puja alu</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="alu4.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">kalila alu</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="alu3.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">crismas bubu</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+<div class="copyright"> copyright © 2026 
+      DEBJIT DAS</div>
+</body>
+</html>

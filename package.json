@@ -1,0 +1,25 @@
+{
+  "name": "learn-full-stack-going",
+  "version": "1.0.0",
+  "description": "step coming",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosdebbu/learn-full-stack-going.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rosdebbu/learn-full-stack-going/issues"
+  },
+  "homepage": "https://github.com/rosdebbu/learn-full-stack-going#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "tailwindcss": "^4.2.1"
+  }
+}
