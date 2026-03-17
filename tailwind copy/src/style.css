@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --color-srm-dark: #16171d;
+  --color-srm-purple: #c084fc;
+}
