@@ -77,3 +77,7 @@ for (let m = 0; m < cities.length; m++) {
     cityList.push(mycity);
 }
  console.log(cityList);
+
+
+ // have work on do while loop and for loop and for loop
+ 
