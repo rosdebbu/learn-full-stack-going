@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Recipe Gallery ❤️</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- HEADER -->
+    <header class="bg-white shadow p-4">
+        <h1 class="text-3xl font-bold text-center text-gray-800">❤️ Our Recipe Gallery</h1>
+        <p class="text-center text-gray-600 mt-1">Made with love by [Your Name] & [GF's Name]</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+
+        <!-- FILTER BUTTONS -->
+        <div class="flex justify-center gap-4 mb-8">
+            <button data-filter="all" class="filter-btn bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg transition">All</button>
+            <button data-filter="me" class="filter-btn bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg transition">👨‍🍳 My Recipes</button>
+            <button data-filter="gf" class="filter-btn bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg transition">👩‍🍳 GF's Recipes</button>
+        </div>
+
+        <!-- GRID CONTAINER (cards will be injected here) -->
+        <div id="recipe-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- JavaScript will fill this -->
+        </div>
+    </main>
+
+    <!-- MODAL (popup for recipe details) -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+            <h2 id="modal-title" class="text-2xl font-bold"></h2>
+            <p id="modal-desc" class="mt-2 text-gray-600"></p>
+            <div id="modal-author" class="mt-2 text-sm font-medium"></div>
+            <button id="close-modal" class="mt-4 bg-red-500 text-white px-4 py-2 rounded w-full hover:bg-red-600 transition">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // ---------- RECIPE DATA ----------
+        // Each object = one recipe
+        const recipes = [
+            {
+                title: "My Famous Spaghetti",
+                description: "A secret family recipe, now shared with you.",
+                image: "https://picsum.photos/id/108/400/200",
+                author: "me",
+                fullDetails: "Boil spaghetti. In a pan, sauté garlic in olive oil, add cooked pasta, toss with parmesan and a splash of pasta water. Garnish with parsley."
+            },
+            {
+                title: "GF's Chocolate Cake",
+                description: "Decadent and rich – her specialty!",
+                image: "https://picsum.photos/id/106/400/200",
+                author: "gf",
+                fullDetails: "Mix flour, cocoa, sugar, eggs, and butter. Bake at 350°F for 30 min. Frost with chocolate ganache."
+            },
+            {
+                title: "My Breakfast Omelette",
+                description: "Perfect for lazy Sundays.",
+                image: "https://picsum.photos/id/127/400/200",
+                author: "me",
+                fullDetails: "Whisk 3 eggs, pour into hot buttered pan. Add cheese, mushrooms, and spinach. Fold and cook until set."
+            },
+            {
+                title: "GF's Vegan Curry",
+                description: "Healthy and full of flavor.",
+                image: "https://picsum.photos/id/130/400/200",
+                author: "gf",
+                fullDetails: "Sauté onion, garlic, ginger. Add curry paste, coconut milk, chickpeas, and spinach. Simmer for 10 min. Serve with rice."
+            }
+            // Add more recipes by copying the object above
+        ];
+
+        // ---------- DOM ELEMENTS ----------
+        const grid = document.getElementById('recipe-grid');
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalAuthor = document.getElementById('modal-author');
+        const closeModalBtn = document.getElementById('close-modal');
+
+        // ---------- FUNCTION TO RENDER CARDS ----------
+        function renderCards(filter = 'all') {
+            // Clear the grid
+            grid.innerHTML = '';
+
+            // Filter recipes based on the selected author
+            let filteredRecipes = recipes;
+            if (filter !== 'all') {
+                filteredRecipes = recipes.filter(recipe => recipe.author === filter);
+            }
+
+            // Loop through each recipe and create a card
+            filteredRecipes.forEach(recipe => {
+                // Create the card container div
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300';
+
+                // Decide badge styling based on author
+                const badgeColor = recipe.author === 'me' 
+                    ? 'bg-blue-100 text-blue-800' 
+                    : 'bg-pink-100 text-pink-800';
+                const badgeText = recipe.author === 'me' ? '👨‍🍳 Me' : '👩‍🍳 GF';
+
+                // Fill the card with HTML content
+                card.innerHTML = `
+                    <img src="${recipe.image}" alt="${recipe.title}" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold text-gray-800">${recipe.title}</h3>
+                            <span class="text-sm ${badgeColor} px-2 py-1 rounded-full">${badgeText}</span>
+                        </div>
+                        <p class="text-gray-600 mt-2">${recipe.description}</p>
+                        <button class="view-recipe-btn mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition-colors w-full">
+                            View Recipe
+                        </button>
+                    </div>
+                `;
+
+                // Add event listener to the button inside this card to open modal
+                const viewBtn = card.querySelector('.view-recipe-btn');
+                viewBtn.addEventListener('click', () => {
+                    modalTitle.textContent = recipe.title;
+                    // Show fullDetails if available, otherwise fallback to description
+                    modalDesc.textContent = recipe.fullDetails || recipe.description;
+                    modalAuthor.textContent = recipe.author === 'me' ? 'Made by Me ❤️' : 'Made by GF ❤️';
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                });
+
+                // Append the finished card to the grid
+                grid.appendChild(card);
+            });
+        }
+
+        // ---------- FILTER BUTTONS EVENT LISTENERS ----------
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filterValue = btn.getAttribute('data-filter');
+                renderCards(filterValue);
+            });
+        });
+
+        // ---------- MODAL CLOSE ----------
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        });
+
+        // Close modal when clicking outside the modal content (on the backdrop)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        });
+
+        // Initial render: show all recipes
+        renderCards('all');
+    </script>
+
+</body>
+</html>
