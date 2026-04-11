@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>our Recipe Gallery</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header class="bg-white shadow p-4">
+        <h1 class="text-3xl font-bold text-center text-gray-800">❤️ Our Recipe Gallery</h1>
+        <p class="text-center text-gray-600 mt-3">made for ami and alu</p>
+    </header>
+     
+    <main class="max-w-7xl mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card will go here -->
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <img src="nono.jpeg" alt="Spaghetti" class="w-full h-48 object-cover">
+    <div class="p-4">
+        <h3 class="text-xl font-semibold text-gray-800">My Famous Spaghetti</h3>
+        <p class="text-gray-600 mt-2">A secret family recipe, now shared with you.</p>
+<button class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition-colors">View Recipe</button>
+    </div>
+</div>
+    </div>
+</main>
+
+    <!-- another card-->
+      <main class="max-w-7xl mx-auto px-4 py-8" >
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card will go here -->
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <img src="nono.jpeg" alt="Spaghetti" class="w-full h-48 object-cover">
+    <div class="p-4">
+        <h3 class="text-xl font-semibold text-gray-800">My Famous Spaghetti</h3>
+        <p class="text-gray-600 mt-2">A secret family recipe, now shared with you.</p>
+<button class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition-colors">View Recipe</button>
+    </div>
+</div>
+    </div>
+</main>
+ <!--into to the js -->
+
+ <script>
+    const recipes = [
+        {
+            title: "My Famous Spaghetti",
+            description: "A secret family recipe, now shared with you.",
+            image: "https://picsum.photos/id/108/400/200",
+            author: "me"
+        },
+        {
+            title: "GF's Chocolate Cake",
+            description: "Decadent and rich – her specialty!",
+            image: "https://picsum.photos/id/106/400/200",
+            author: "gf"
+        }
+    ];
+</script>
+</body>
+</html>
